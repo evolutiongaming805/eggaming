@@ -52,6 +52,7 @@
               z-index:2;
         }
 
+
         /* Styling for the rest of the page content */
         /* Add your custom styles here */
     </style>
@@ -142,6 +143,55 @@
         <p class="footer-text">© 2023 Evolution Gaming Community. All rights reserved.</p>
     </footer>
 
+    <div style="height: 700px;"
+      />
 </body>
+
+<script>
+    window.onload = function() {
+        var camera = document.querySelector('a-camera');
+        if (window.innerWidth <= 768) { // Example breakpoint for mobile devices
+          console.log('mobile')
+            camera.setAttribute('position', {x: 0, y: 0, z: -1.5}); // Closer camera position for mobile
+        } else {
+            camera.setAttribute('position', {x: 0, y: 0, z: -2}); // Default position for desktop
+        }
+    };
+    
+window.addEventListener('scroll', function() {
+    var aframeContainer = document.querySelector('.aframe-container');
+    var body = document.body;
+    var html = document.documentElement;
+
+    var scrollTop = html.scrollTop || body.scrollTop;
+    var scrollHeight = Math.max(body.scrollHeight, body.offsetHeight, 
+                                html.clientHeight, html.scrollHeight, html.offsetHeight);
+    var clientHeight = html.clientHeight || window.innerHeight;
+    var scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
+  const footer = document.querySelector("footer")
+
+    if (scrolledToBottom) {
+
+        // Create and append a new div
+        const div = document.createElement("div");
+        div.style.height = aframeContainer.style.height*2; // Set the height of the new div
+        div.style.width = '100%'; // Ensure the div spans the full width
+        div.style.position = 'absolute'; // Position the div correctly
+        div.style.top = clientHeight + 'px'; // Position the div right below the viewport
+        div.style.opacity = 0; // Make the div transparent
+
+        body.appendChild(div);
+
+        // Set opacity of A-Frame container to 1
+        aframeContainer.style.opacity = 1;
+        footer.style.opacity = 0.1
+    } else{
+
+        aframeContainer.style.opacity = 0.1;
+      footer.style.opacity = 1
+    }
+});
+
+</script>
 
 </html>
