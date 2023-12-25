@@ -92,6 +92,28 @@ section {
 .footer-text {
     margin: 0;
 }
+/* Human Resources styles */
+.hr-section {
+    padding: 2em 5%;
+}
+
+.contact-options {
+    background-color: #262626; /* Consistent with other sections */
+    padding: 1em;
+    border-left: 5px solid #21d4fd; /* Neon blue border */
+}
+
+.discord-name {
+    color: #bb29eb; /* Neon purple for emphasis */
+}
+
+.ticket-link {
+    color: #21d4fd; /* Neon blue for ticket link */
+}
+
+.ticket-link:hover {
+    text-decoration: underline;
+}
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
